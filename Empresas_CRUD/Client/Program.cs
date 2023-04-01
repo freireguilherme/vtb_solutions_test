@@ -1,4 +1,5 @@
 global using Empresas_CRUD.Client.Services.EmpresaService;
+global using Empresas_CRUD.Shared;
 using Empresas_CRUD.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
