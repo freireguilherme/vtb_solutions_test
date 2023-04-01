@@ -1,3 +1,4 @@
+global using Empresas_CRUD.Shared;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
