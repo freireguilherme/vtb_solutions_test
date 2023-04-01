@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Empresas_CRUD.Shared
 {
-    internal class Segmentos
+    public class Segmentos
     {
+        public int Id { get; set; }
+
+        public string Nome { get; set; } = string.Empty;
     }
 }
