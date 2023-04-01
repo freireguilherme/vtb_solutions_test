@@ -28,7 +28,7 @@ namespace Empresas_CRUD.Server.Controllers
             }
         };
         //funções.
-        //Aqui queremos receber uma lista de todas as empresas de modo async
+        //Aqui queremos receber uma lista de todas as empresas
         [HttpGet]
         public async Task<ActionResult<List<Empresas>>> GetEmpresas()
         {
@@ -44,7 +44,7 @@ namespace Empresas_CRUD.Server.Controllers
             {
                 return NotFound("Desculpa, empresa não encontrada");
             }
-            return Ok(empresas);
+            return Ok(empresa);
         }
 
 
