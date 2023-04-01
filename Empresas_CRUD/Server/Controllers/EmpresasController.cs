@@ -18,14 +18,16 @@ namespace Empresas_CRUD.Server.Controllers
                 Id = 1,
                 Nome = "ACME",
                 Site = "https://acme.com",
-                Segmento = segmentos[0]
+                Segmento = segmentos[0],
+                SegmentoId = 1,
             },
             new Empresas {
                 Id = 2,
                 Nome = "Google",
                 Site = "https://google.com",
-                Segmento = segmentos[1]
-            }
+                Segmento = segmentos[1],
+                SegmentoId = 2,
+            },
         };
         //funções.
         //Aqui queremos receber uma lista de todas as empresas
@@ -33,6 +35,12 @@ namespace Empresas_CRUD.Server.Controllers
         public async Task<ActionResult<List<Empresas>>> GetEmpresas()
         {
             return Ok(empresas);
+        }
+
+        [HttpGet("segmentos")]
+        public async Task<ActionResult<List<Segmentos>>> GetSegmentos()
+        {
+            return Ok(segmentos);
         }
 
         //Agora queremos receber uma empresa com base no ID

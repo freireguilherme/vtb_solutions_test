@@ -22,9 +22,12 @@ namespace Empresas_CRUD.Client.Services.EmpresaService
                 Empresas = resultado;
         }
 
-        public Task GetSegmentos()
+        public async Task GetSegmentos()
         {
-            throw new NotImplementedException();
+            var resultado = await _http.GetFromJsonAsync<List<Segmentos>>("api/empresas/segmentos");
+
+            if (resultado != null)
+                Segmentos = resultado;
         }
 
         public async Task<Empresas> GetSingleEmpresa(int id)
