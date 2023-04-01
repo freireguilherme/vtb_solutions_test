@@ -1,6 +1,5 @@
 ﻿@page "/empresas"
 
-// como está no imports.razor e program.cs, Blazor consegue injetar sem todo o caminho do diretorio
 @inject IEmpresaService EmpresaService
 
 
@@ -8,7 +7,7 @@
 <h3>Empresas</h3>
 
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Nome</th>
@@ -18,10 +17,20 @@
         </tr>
     </thead>
     <tbody>
-
+        @foreach (var empresa in EmpresaService.Empresas)
+        {
+            <tr>
+                <td>@empresa.Nome</td>
+                <td>@empresa.Site</td>
+                <td>@empresa.Segmento.Nome</td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @code {
-
+    protected override async Task OnInitializedAsync()
+    {
+        await EmpresaService.GetEmpresas();
+    }
 }
