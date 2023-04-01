@@ -6,7 +6,7 @@ namespace Empresas_CRUD.Client.Services.EmpresaService
     public class EmpresaService : IEmpresaService
     {
         private readonly HttpClient _http;
-
+        //construtor da classe
         public EmpresaService(HttpClient http)
         {
             _http = http;
