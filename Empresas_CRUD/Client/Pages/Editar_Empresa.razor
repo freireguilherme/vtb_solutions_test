@@ -26,7 +26,7 @@ else
         <InputText id="site" @bind-Value="empresa.Site" class="form-control"></InputText>
     </div>
     <div>
-        <label for="segmento">Segmento</label>
+        <label>Segmento</label>
         <InputSelect id="segmento" @bind-Value="empresa.SegmentoId" class="form-select">
             @foreach( var segmento in EmpresaService.Segmentos)
             {
@@ -34,13 +34,23 @@ else
             }
         </InputSelect>
     </div>
+    <br />
+    <button type="submit" class="btn btn-primary">@btnText</button>
 </EditForm>
 
 @code {
     [Parameter]
     public int? Id { get; set; }
 
+    string btnText = string.Empty;
+
     Empresas empresa = new Empresas{ Segmento = new Segmentos() };
+
+    protected override async Task OnInitializedAsync()
+    {
+        btnText = Id == null ? "Salvar empresa" : "Atualizar empresa";
+        await EmpresaService.GetSegmentos();
+    }
 
     protected override async Task OnParametersSetAsync()
     {
