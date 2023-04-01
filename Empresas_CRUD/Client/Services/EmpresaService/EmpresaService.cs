@@ -27,9 +27,13 @@ namespace Empresas_CRUD.Client.Services.EmpresaService
             throw new NotImplementedException();
         }
 
-        public Task<Empresas> GetSingleEmpresa(int id)
+        public async Task<Empresas> GetSingleEmpresa(int id)
         {
-            throw new NotImplementedException();
+            var resultado = await _http.GetFromJsonAsync<Empresas>($"api/empresas/{id}");
+
+            if (resultado != null)
+                return resultado;
+            throw new Exception("Empresa não encontada");
         }
     }
 }
