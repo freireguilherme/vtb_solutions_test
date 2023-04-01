@@ -1,6 +1,7 @@
 ﻿@page "/empresas"
 
 @inject IEmpresaService EmpresaService
+@inject NavigationManager NavigationManager
 
 
 <PageTitle>Empresas</PageTitle>
@@ -23,6 +24,9 @@
                 <td>@empresa.Nome</td>
                 <td>@empresa.Site</td>
                 <td>@empresa.Segmento.Nome</td>
+                <td>
+                    <button class="btn btn-pencil" @onclick="(() => MostrarEmpresa(empresa.Id))"><i class="oi oi-pencil"></i></button>
+                </td>
             </tr>
         }
     </tbody>
@@ -32,5 +36,10 @@
     protected override async Task OnInitializedAsync()
     {
         await EmpresaService.GetEmpresas();
+    }
+
+    void MostrarEmpresa(int id)
+    {
+        NavigationManager.NavigateTo($"editar-empresa/{id}");
     }
 }
