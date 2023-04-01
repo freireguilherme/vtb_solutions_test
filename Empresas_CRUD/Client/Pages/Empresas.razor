@@ -1,0 +1,27 @@
+﻿@page "/empresas"
+
+// como está no imports.razor e program.cs, Blazor consegue injetar sem todo o caminho do diretorio
+@inject IEmpresaService EmpresaService
+
+
+<PageTitle>Empresas</PageTitle>
+<h3>Empresas</h3>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Site</th>
+            <th>Segmento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+@code {
+
+}
