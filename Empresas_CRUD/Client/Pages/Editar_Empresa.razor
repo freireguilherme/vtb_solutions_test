@@ -1,0 +1,19 @@
+﻿@page "/editar-empresa"
+@page "/editar-empresa/{id:int}"
+@inject IEmpresaService EmpresaService
+
+@if(Id == null)
+{
+    <PageTitle>Add uma nova empresa</PageTitle>
+    <h3>Adicione uma nova empresa</h3>
+}
+else
+{
+    <PageTitle>Edite</PageTitle>
+    <h3>Edite</h3>
+}
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    Empresas empresa = new Empresas();
+}
