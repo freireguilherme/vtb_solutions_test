@@ -10,5 +10,9 @@ namespace Empresas_CRUD.Client.Services.EmpresaService
         Task GetEmpresas();
 
         Task<Empresas> GetSingleEmpresa(int id);
+
+        Task CreateEmpresa(Empresas empresa);
+        Task UpdateEmpresa(Empresas empresa);
+        Task DeleteEmpresa(int id);
     }
 }
