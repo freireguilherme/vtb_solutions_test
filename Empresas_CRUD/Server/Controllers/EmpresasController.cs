@@ -89,5 +89,23 @@ namespace Empresas_CRUD.Server.Controllers
 
             return Ok(await GetDbEmpresas());
         }
+
+        //deletar uma empresa
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<Empresas>>> DeleteEmpresa(int id)
+        {
+            var dbEmpresa = await _context.Empresas
+                .Include(e => e.Segmento)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (dbEmpresa == null)
+                return NotFound("Desculpa, empresa não encontrada");
+
+            _context.Empresas.Remove(dbEmpresa);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(await GetDbEmpresas());
+        }
     }
 }
