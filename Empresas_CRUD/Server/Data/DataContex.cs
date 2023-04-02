@@ -5,6 +5,7 @@ namespace Empresas_CRUD.Server.Data
     {
         public DataContex(DbContextOptions<DataContex> options) : base(options) { }
 
+        //alimentamos o banco de dados com algumas informações já na criação dele
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Segmentos>().HasData(
