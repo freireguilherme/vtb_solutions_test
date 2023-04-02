@@ -36,6 +36,7 @@ else
     </div>
     <br />
     <button type="submit" class="btn btn-primary">@btnText</button>
+    <button type="button" class="btn btn-danger" @onclick="DeleteEmpresa">Deletar Empresa</button>
 </EditForm>
 
 @code {
@@ -57,6 +58,8 @@ else
         if (Id == null)
         {
             //criar uma empresa
+            empresa.Segmento = EmpresaService.Segmentos[0];
+            empresa.SegmentoId = empresa.Segmento.Id;
         }
         else
         {
@@ -64,8 +67,20 @@ else
         }
     }
 
-    void HandleSubmit()
+    async Task HandleSubmit()
     {
-        
+        if( Id == null)
+        {
+            await EmpresaService.CreateEmpresa(empresa);
+        }
+        else
+        {
+            await EmpresaService.UpdateEmpresa(empresa);
+        }
+    }
+
+    async Task DeleteEmpresa()
+    {
+           await EmpresaService.DeleteEmpresa(empresa.Id);
     }
 }

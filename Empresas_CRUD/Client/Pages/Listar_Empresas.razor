@@ -14,7 +14,7 @@
             <th>Nome</th>
             <th>Site</th>
             <th>Segmento</th>
-            <th></th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -26,19 +26,32 @@
                 <td>@empresa.Segmento.Nome</td>
                 <td>
                     <button class="btn btn-pencil" @onclick="(() => MostrarEmpresa(empresa.Id))"><i class="oi oi-pencil"></i></button>
+                    <button class="btn btn-delete" @onclick="(() => DeleteEmpresa(empresa.Id))"><i class="oi oi-trash"></i></button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<button class="btn btn-primary" @onclick="CreateNewEmpresa">Criar Nova Empresa</button>
 
 @code {
+
     protected override async Task OnInitializedAsync()
     {
         await EmpresaService.GetEmpresas();
     }
 
     void MostrarEmpresa(int id)
+    {
+        NavigationManager.NavigateTo($"editar-empresa/{id}");
+    }
+
+    void CreateNewEmpresa()
+    {
+        NavigationManager.NavigateTo("/editar-empresa");
+    }
+    
+    void DeleteEmpresa(int id)
     {
         NavigationManager.NavigateTo($"editar-empresa/{id}");
     }
