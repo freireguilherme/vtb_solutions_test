@@ -1,7 +1,7 @@
 global using Microsoft.EntityFrameworkCore;
 global using Empresas_CRUD.Shared;
+global using Empresas_CRUD.Server.Data;
 using Microsoft.AspNetCore.ResponseCompression;
-using Empresas_CRUD.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
