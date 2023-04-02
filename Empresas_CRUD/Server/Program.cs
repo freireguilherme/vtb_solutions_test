@@ -1,5 +1,7 @@
+global using Microsoft.EntityFrameworkCore;
 global using Empresas_CRUD.Shared;
 using Microsoft.AspNetCore.ResponseCompression;
+using Empresas_CRUD.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<DataContex>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
