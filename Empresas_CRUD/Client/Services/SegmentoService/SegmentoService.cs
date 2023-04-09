@@ -27,9 +27,10 @@ namespace Empresas_CRUD.Client.Services.SegmentoService
             await SetSegmento(resultado);
         }
 
-        public Task DeleteSegmento(int id)
+        public async Task DeleteSegmento(int id)
         {
-            throw new NotImplementedException();
+            var resultado = await _http.DeleteAsync($"api/segmentos/{id}");
+            await SetSegmento(resultado);
         }
 
         public async Task GetSegmentos()
