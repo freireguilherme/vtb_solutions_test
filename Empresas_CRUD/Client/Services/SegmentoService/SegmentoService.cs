@@ -32,19 +32,27 @@ namespace Empresas_CRUD.Client.Services.SegmentoService
             throw new NotImplementedException();
         }
 
-        public Task GetSegmentos()
+        public async Task GetSegmentos()
         {
-            throw new NotImplementedException();
+            var resultado = await _http.GetFromJsonAsync<List<Segmentos>>("api/segmentos");
+
+            if (resultado != null)
+                Segmentos = resultado;
         }
 
-        public Task<Segmentos> GetSingleSegmento(int id)
+        public async Task<Segmentos> GetSingleSegmento(int id)
         {
-            throw new NotImplementedException();
+            var resultado = await _http.GetFromJsonAsync<Segmentos>($"api/segmentos/{id}");
+
+            if (resultado != null)
+                return resultado;
+            throw new Exception("Empresa não encontada");
         }
 
-        public Task UpdateSegmento(Segmentos segmento)
+        public async Task UpdateSegmento(Segmentos segmento)
         {
-            throw new NotImplementedException();
+            var resultado = await _http.PutAsJsonAsync($"api/segmentos/{segmento.Id}", segmento);
+            await SetSegmento(resultado);
         }
     }
 }
