@@ -1,4 +1,5 @@
 global using Empresas_CRUD.Client.Services.EmpresaService;
+global using Empresas_CRUD.Client.Services.SegmentoService;
 global using Empresas_CRUD.Shared;
 using Empresas_CRUD.Client;
 using Microsoft.AspNetCore.Components.Web;
@@ -11,4 +12,5 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 //Quando eu quero usar um Service Empresa, uso a interface IEmpresaService para isso. Facilita a mudança para outros serviços
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IEmpresaService, EmpresaService>();
+builder.Services.AddScoped<ISegmentoService, SegmentoService>();
 await builder.Build().RunAsync();
