@@ -1,0 +1,56 @@
+﻿@page "/listar-segmentos"
+
+@inject ISegmentoService SegmentoService
+@inject NavigationManager NavigationManager
+
+
+<PageTitle>Segmentos</PageTitle>
+<h3>Segmentos</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var segmento in SegmentoService.Segmentos)
+        {
+            <tr>
+                <td>@segmento.Nome</td>
+                <td></td>
+                <td>
+                    <button class="btn btn-pencil" @onclick="(() => MostrarSegmento(segmento.Id))"><i class="oi oi-pencil"></i></button>
+                    <button class="btn btn-delete" @onclick="(() => DeleteSegmento(segmento.Id))"><i class="oi oi-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="btn btn-primary" @onclick="CreateNewSegmento">Criar Novo Segmento</button>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SegmentoService.GetSegmento();
+    }
+
+    void MostrarSegmento(int id)
+    {
+        NavigationManager.NavigateTo($"editar-empresa/{id}");
+    }
+
+    void CreateNewEmpresa()
+    {
+        NavigationManager.NavigateTo("/editar-empresa");
+    }
+    
+    void DeleteEmpresa(int id)
+    {
+        NavigationManager.NavigateTo($"editar-empresa/{id}");
+    }
+}
